@@ -13,7 +13,7 @@
     <ul>
         @foreach($categories as $category)
         <li>
-            <a href="{{ route('dashboard.categories.show', $category->id) }}">{{ $category->name }}</a>
+            <a href="{{ route('dashboard.categories.show', $category) }}">{{ $category->name }}</a>
             — {{ $category->products()->count() }} products
         </li>
         @endforeach
