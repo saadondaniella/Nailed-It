@@ -20,6 +20,16 @@ class CategoryController extends Controller
     }
 
     /**
+     * Dashboard listing for categories.
+     */
+    public function dashboard()
+    {
+        $categories = Category::orderBy('name')->get();
+
+        return view('dashboard.index', compact('categories'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -40,7 +50,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $category->load('products');
+
+        return view('dashboard.show', [
+            'category' => $category,
+        ]);
     }
 
     /**
