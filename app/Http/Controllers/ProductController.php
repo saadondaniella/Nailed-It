@@ -52,7 +52,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'color' => 'nullable|string|max:50',
+            'stock' => 'required|integer|min:0',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $product->update($data);
+
+        return response()->json(['success' => true, 'product' => $product]);
     }
 
     /**
