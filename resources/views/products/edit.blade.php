@@ -81,7 +81,7 @@
 
     <br>
 
-    <a href="{{ url()->previous() }}">Cancel</a>
+    <a href="{{ route('dashboard.show', $product->category) }}">Back to products</a>
 
 </body>
 
