@@ -69,7 +69,9 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('dashboard.show', ['category' => $product->category_id]);
+        return redirect()
+            ->route('dashboard.show', ['category' => $product->category_id])
+            ->with('success', 'Product updated!');
     }
 
     /**
