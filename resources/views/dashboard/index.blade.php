@@ -7,7 +7,9 @@
 </head>
 
 <body>
-    <h1>Dashboard — Categories</h1>
+    <h1>NAILED IT</h1>
+
+    <h2>Dashboard — Categories</h2>
 
     @if($categories->count())
     <ul>

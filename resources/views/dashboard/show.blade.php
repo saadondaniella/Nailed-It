@@ -10,20 +10,45 @@
     <h1>{{ $category->name }}</h1>
 
     @if($category->products->count())
-    <ul>
-        @foreach($category->products as $product)
-        <li>
-            <strong>{{ $product->name }}</strong><br>
-            {{ $product->description }}<br>
-            Price: {{ $product->price }} — Stock: {{ $product->stock }}
-        </li>
-        @endforeach
-    </ul>
+
+    @foreach($category->products as $product)
+    <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc;">
+
+        <h3>{{ $product->name }}</h3>
+
+        <p>{{ $product->description }}</p>
+
+        <p>
+            Price: {{ $product->price }} kr <br>
+            Stock: {{ $product->stock }}
+        </p>
+
+        {{-- EDIT --}}
+        <a href="{{ route('products.edit', $product) }}">
+            Edit
+        </a>
+
+        {{-- DELETE --}}
+        <form action="{{ route('products.destroy', $product) }}"
+            method="POST"
+            style="display:inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete</button>
+        </form>
+
+    </div>
+    @endforeach
+
     @else
     <p>No products in this category.</p>
     @endif
 
-    <p><a href="{{ route('dashboard.index') }}">Back to dashboard</a></p>
+    <p>
+        <a href="{{ route('dashboard.index') }}">
+            Back to dashboard
+        </a>
+    </p>
 </body>
 
 </html>

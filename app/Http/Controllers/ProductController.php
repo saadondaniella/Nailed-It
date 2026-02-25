@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -44,7 +45,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::orderBy('name')->get();
+
+        return view('products.edit', [
+            'product' => $product,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -53,17 +59,17 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric|min:0',
-            'color' => 'nullable|string|max:50',
-            'stock' => 'required|integer|min:0',
-            'category_id' => 'required|exists:categories,id',
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'color' => ['nullable', 'string', 'max:50'],
+            'stock' => ['required', 'integer', 'min:0'],
+            'category_id' => ['required', 'exists:categories,id'],
         ]);
 
         $product->update($data);
 
-        return response()->json(['success' => true, 'product' => $product]);
+        return redirect()->route('dashboard.show', ['category' => $product->category_id]);
     }
 
     /**
