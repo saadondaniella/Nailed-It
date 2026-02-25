@@ -74,7 +74,7 @@
 
     <br>
 
-    <a href="{{ route('dashboard.show', ['category' => $product->category_id]) }}">Cancel</a>
+    <a href="{{ url()->previous() }}">Cancel</a>
 
 </body>
 
