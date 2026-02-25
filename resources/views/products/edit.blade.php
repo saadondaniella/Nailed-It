@@ -9,6 +9,13 @@
 
     <h1>Edit Product</h1>
 
+    {{-- Success flash --}}
+    @if(session('success'))
+    <div style="color: green; margin-bottom:10px;">
+        {{ session('success') }}
+    </div>
+    @endif
+
     @if ($errors->any())
     <div>
         <ul>
