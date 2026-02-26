@@ -49,6 +49,8 @@
             Back to dashboard
         </a>
     </p>
+
+    @include('partials.logout')
 </body>
 
 </html>

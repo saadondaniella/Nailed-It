@@ -25,6 +25,8 @@
     @endif
 
     <p><a href="/">Back to site</a></p>
+
+    @include('partials.logout')
 </body>
 
 </html>
