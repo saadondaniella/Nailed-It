@@ -20,10 +20,15 @@
         <input type="number" name="min_price" placeholder="Min price" value="{{ request('min_price') }}" step="0.01">
         <input type="number" name="max_price" placeholder="Max price" value="{{ request('max_price') }}" step="0.01">
 
-        <label style="margin-left:10px;">
-            <input type="checkbox" name="in_stock" value="1" @checked(request()->boolean('in_stock'))>
-            In stock only
-        </label>
+        <select name="stock_filter">
+    <option value="">All</option>
+    <option value="in_stock" @selected(request('stock_filter') === 'in_stock')>
+        In stock only
+    </option>
+    <option value="out_of_stock" @selected(request('stock_filter') === 'out_of_stock')>
+        Out of stock
+    </option>
+</select>
 
         <select name="sort">
             <option value="name_asc" @selected(request('sort', 'name_asc' )==='name_asc' )>Name (A–Z)</option>
