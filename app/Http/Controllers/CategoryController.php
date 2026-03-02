@@ -25,72 +25,14 @@ class CategoryController extends Controller
      */
     public function dashboard(Request $request)
     {
-        $view = $request->query('view', 'categories'); // categories | products
+        $view = $request->query('view', 'categories');
         $categories = Category::orderBy('name')->get();
         $products = null;
 
         if ($view === 'products') {
 
-            $productsQuery = Product::query()->with('category');
-
-            // Search
-            $productsQuery->when($request->filled('search'), function ($query) use ($request) {
-                $query->where('name', 'like', '%' . $request->search . '%');
-            });
-
-            // Filter by category
-            $productsQuery->when($request->filled('category_id'), function ($query) use ($request) {
-                $query->where('category_id', $request->category_id);
-            });
-
-            // Price filters
-            $productsQuery->when($request->filled('min_price'), function ($query) use ($request) {
-                $query->where('price', '>=', $request->min_price);
-            });
-
-            $productsQuery->when($request->filled('max_price'), function ($query) use ($request) {
-                $query->where('price', '<=', $request->max_price);
-            });
-
-            // Stock filter
-            $productsQuery->when($request->stock_filter === 'in_stock', function ($query) {
-                $query->where('stock', '>', 0);
-            });
-
-            $productsQuery->when($request->stock_filter === 'out_of_stock', function ($query) {
-                $query->where('stock', 0);
-            });
-
-            // Sorting
-            $sort = $request->query('sort', 'name_asc');
-
-            switch ($sort) {
-
-                case 'name_desc':
-                    $productsQuery->orderBy('name', 'desc');
-                    break;
-
-                case 'price_asc':
-                    $productsQuery->orderBy('price', 'asc');
-                    break;
-
-                case 'price_desc':
-                    $productsQuery->orderBy('price', 'desc');
-                    break;
-
-                case 'stock_asc':
-                    $productsQuery->orderBy('stock', 'asc');
-                    break;
-
-                case 'stock_desc':
-                    $productsQuery->orderBy('stock', 'desc');
-                    break;
-
-                default:
-                    $productsQuery->orderBy('name', 'asc');
-            }
-
-            $products = $productsQuery
+            $products = Product::with('category')
+                ->filter($request)
                 ->paginate(10)
                 ->withQueryString();
         }
@@ -107,61 +49,8 @@ class CategoryController extends Controller
      */
     public function show(Request $request, Category $category)
     {
-        $productsQuery = $category->products();
-
-        // Search
-        $productsQuery->when($request->filled('search'), function ($query) use ($request) {
-            $query->where('name', 'like', '%' . $request->search . '%');
-        });
-
-        // Price filters
-        $productsQuery->when($request->filled('min_price'), function ($query) use ($request) {
-            $query->where('price', '>=', $request->min_price);
-        });
-
-        $productsQuery->when($request->filled('max_price'), function ($query) use ($request) {
-            $query->where('price', '<=', $request->max_price);
-        });
-
-        // Stock filter
-        $productsQuery->when($request->stock_filter === 'in_stock', function ($query) {
-            $query->where('stock', '>', 0);
-        });
-
-        $productsQuery->when($request->stock_filter === 'out_of_stock', function ($query) {
-            $query->where('stock', 0);
-        });
-
-        // Sorting
-            $sort = $request->query('sort', 'name_asc');
-
-            switch ($sort) {
-
-                case 'name_desc':
-                    $productsQuery->orderBy('name', 'desc');
-                    break;
-
-                case 'price_asc':
-                    $productsQuery->orderBy('price', 'asc');
-                    break;
-
-                case 'price_desc':
-                    $productsQuery->orderBy('price', 'desc');
-                    break;
-
-                case 'stock_asc':
-                    $productsQuery->orderBy('stock', 'asc');
-                    break;
-
-                case 'stock_desc':
-                    $productsQuery->orderBy('stock', 'desc');
-                    break;
-
-                default:
-                    $productsQuery->orderBy('name', 'asc');
-            }
-
-        $products = $productsQuery
+        $products = $category->products()
+            ->filter($request)
             ->paginate(10)
             ->withQueryString();
 
