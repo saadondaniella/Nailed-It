@@ -23,18 +23,46 @@
 
         <select name="stock_filter">
             <option value="">All</option>
-            <option value="in_stock" @selected(request('stock_filter')==='in_stock' )>
+            <option value="in_stock" @selected(request('stock_filter') === 'in_stock')>
                 In stock only
             </option>
-            <option value="out_of_stock" @selected(request('stock_filter')==='out_of_stock' )>
+            <option value="out_of_stock" @selected(request('stock_filter') === 'out_of_stock')>
                 Out of stock
             </option>
         </select>
 
         <select name="sort">
-            <option value="name_asc" @selected(request('sort', 'name_asc' )==='name_asc' )>Name (A–Z)</option>
-            <option value="price_asc" @selected(request('sort')==='price_asc' )>Price (low → high)</option>
-            <option value="price_desc" @selected(request('sort')==='price_desc' )>Price (high → low)</option>
+
+            <option value="name_asc"
+                @selected(request('sort', 'name_asc') === 'name_asc')>
+                Name (A–Z)
+            </option>
+
+            <option value="name_desc"
+                @selected(request('sort') === 'name_desc')>
+                Name (Z–A)
+            </option>
+
+            <option value="price_asc"
+                @selected(request('sort') === 'price_asc')>
+                Price (low → high)
+            </option>
+
+            <option value="price_desc"
+                @selected(request('sort') === 'price_desc')>
+                Price (high → low)
+            </option>
+
+            <option value="stock_asc"
+                @selected(request('sort') === 'stock_asc')>
+                Stock (low → high)
+            </option>
+
+            <option value="stock_desc"
+                @selected(request('sort') === 'stock_desc')>
+                Stock (high → low)
+            </option>
+
         </select>
 
         <button type="submit">Filter</button>

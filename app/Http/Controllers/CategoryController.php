@@ -64,12 +64,30 @@ class CategoryController extends Controller
             // Sorting
             $sort = $request->query('sort', 'name_asc');
 
-            if ($sort === 'price_asc') {
-                $productsQuery->orderBy('price', 'asc');
-            } elseif ($sort === 'price_desc') {
-                $productsQuery->orderBy('price', 'desc');
-            } else {
-                $productsQuery->orderBy('name', 'asc');
+            switch ($sort) {
+
+                case 'name_desc':
+                    $productsQuery->orderBy('name', 'desc');
+                    break;
+
+                case 'price_asc':
+                    $productsQuery->orderBy('price', 'asc');
+                    break;
+
+                case 'price_desc':
+                    $productsQuery->orderBy('price', 'desc');
+                    break;
+
+                case 'stock_asc':
+                    $productsQuery->orderBy('stock', 'asc');
+                    break;
+
+                case 'stock_desc':
+                    $productsQuery->orderBy('stock', 'desc');
+                    break;
+
+                default:
+                    $productsQuery->orderBy('name', 'asc');
             }
 
             $products = $productsQuery
@@ -115,15 +133,33 @@ class CategoryController extends Controller
         });
 
         // Sorting
-        $sort = $request->query('sort', 'name_asc');
+            $sort = $request->query('sort', 'name_asc');
 
-        if ($sort === 'price_asc') {
-            $productsQuery->orderBy('price', 'asc');
-        } elseif ($sort === 'price_desc') {
-            $productsQuery->orderBy('price', 'desc');
-        } else {
-            $productsQuery->orderBy('name', 'asc');
-        }
+            switch ($sort) {
+
+                case 'name_desc':
+                    $productsQuery->orderBy('name', 'desc');
+                    break;
+
+                case 'price_asc':
+                    $productsQuery->orderBy('price', 'asc');
+                    break;
+
+                case 'price_desc':
+                    $productsQuery->orderBy('price', 'desc');
+                    break;
+
+                case 'stock_asc':
+                    $productsQuery->orderBy('stock', 'asc');
+                    break;
+
+                case 'stock_desc':
+                    $productsQuery->orderBy('stock', 'desc');
+                    break;
+
+                default:
+                    $productsQuery->orderBy('name', 'asc');
+            }
 
         $products = $productsQuery
             ->paginate(10)
