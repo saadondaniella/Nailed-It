@@ -23,7 +23,9 @@
     @else
     <p>No categories found.</p>
     @endif
-
+    <p>
+        <a href="{{ route('products.create') }}">+ Create new product</a>
+    </p>
     <p><a href="/">Back to site</a></p>
 
     @include('partials.logout')
