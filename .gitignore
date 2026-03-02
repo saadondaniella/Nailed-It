@@ -22,3 +22,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Ignore source CSS if editing public/css/app.css manually
+resources/css/app.css

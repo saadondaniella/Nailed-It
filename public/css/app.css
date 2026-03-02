@@ -103,3 +103,29 @@ button {
 button:hover {
     filter: brightness(0.95);
 }
+
+/* Compact pagination styles (matching resources/css tweaks) */
+nav[role="navigation"] {
+    font-family: inherit;
+}
+
+nav[role="navigation"] a,
+nav[role="navigation"] span {
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+nav[role="navigation"] span[aria-current],
+nav[role="navigation"] .relative {
+    font-weight: 600;
+}
+
+nav[role="navigation"] svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}

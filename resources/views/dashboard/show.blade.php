@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Category — {{ $category->name }}</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body>
@@ -21,14 +22,14 @@
         <input type="number" name="max_price" placeholder="Max price" value="{{ request('max_price') }}" step="0.01">
 
         <select name="stock_filter">
-    <option value="">All</option>
-    <option value="in_stock" @selected(request('stock_filter') === 'in_stock')>
-        In stock only
-    </option>
-    <option value="out_of_stock" @selected(request('stock_filter') === 'out_of_stock')>
-        Out of stock
-    </option>
-</select>
+            <option value="">All</option>
+            <option value="in_stock" @selected(request('stock_filter')==='in_stock' )>
+                In stock only
+            </option>
+            <option value="out_of_stock" @selected(request('stock_filter')==='out_of_stock' )>
+                Out of stock
+            </option>
+        </select>
 
         <select name="sort">
             <option value="name_asc" @selected(request('sort', 'name_asc' )==='name_asc' )>Name (A–Z)</option>
