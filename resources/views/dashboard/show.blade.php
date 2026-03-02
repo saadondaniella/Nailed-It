@@ -8,6 +8,11 @@
 
 <body>
     <h1>{{ $category->name }}</h1>
+    @if (session('success'))
+    <p style="padding:10px; border:1px solid #4caf50; background:#e8f5e9;">
+        {{ session('success') }}
+    </p>
+    @endif
 
     @if($category->products->count())
 
@@ -29,9 +34,7 @@
         </a>
 
         {{-- DELETE --}}
-        <form action="{{ route('products.destroy', $product) }}"
-            method="POST"
-            style="display:inline;">
+        <form action="{{ route('products.destroy', $product) }}" method="POST" style="display:inline;">
             @csrf
             @method('DELETE')
             <button type="submit">Delete</button>
