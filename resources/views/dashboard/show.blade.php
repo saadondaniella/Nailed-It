@@ -14,9 +14,33 @@
     </p>
     @endif
 
-    @if($category->products->count())
+    <form method="GET" action="{{ route('dashboard.show', $category) }}" style="margin: 15px 0;">
+        <input type="text" name="search" placeholder="Search name..." value="{{ request('search') }}">
 
-    @foreach($category->products as $product)
+        <input type="number" name="min_price" placeholder="Min price" value="{{ request('min_price') }}" step="0.01">
+        <input type="number" name="max_price" placeholder="Max price" value="{{ request('max_price') }}" step="0.01">
+
+        <label style="margin-left:10px;">
+            <input type="checkbox" name="in_stock" value="1" @checked(request()->boolean('in_stock'))>
+            In stock only
+        </label>
+
+        <select name="sort">
+            <option value="name_asc" @selected(request('sort', 'name_asc' )==='name_asc' )>Name (A–Z)</option>
+            <option value="price_asc" @selected(request('sort')==='price_asc' )>Price (low → high)</option>
+            <option value="price_desc" @selected(request('sort')==='price_desc' )>Price (high → low)</option>
+        </select>
+
+        <button type="submit">Filter</button>
+
+        <a href="{{ route('dashboard.show', $category) }}" style="margin-left:10px;">
+            Reset
+        </a>
+    </form>
+
+    @if($products->count())
+
+    @foreach($products as $product)
     <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc;">
 
         <h3>{{ $product->name }}</h3>

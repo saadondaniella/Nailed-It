@@ -48,12 +48,41 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Request $request, Category $category)
     {
-        $category->load('products');
+        $productsQuery = $category->products(); // OBS: query builder, inte ->products
+
+        $productsQuery->when($request->filled('search'), function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->query('search') . '%');
+        });
+
+        $productsQuery->when($request->filled('min_price'), function ($query) use ($request) {
+            $query->where('price', '>=', $request->query('min_price'));
+        });
+
+        $productsQuery->when($request->filled('max_price'), function ($query) use ($request) {
+            $query->where('price', '<=', $request->query('max_price'));
+        });
+
+        $productsQuery->when($request->boolean('in_stock'), function ($query) {
+            $query->where('stock', '>', 0);
+        });
+
+        // Sortering
+        $sort = $request->query('sort', 'name_asc');
+        if ($sort === 'price_asc') {
+            $productsQuery->orderBy('price', 'asc');
+        } elseif ($sort === 'price_desc') {
+            $productsQuery->orderBy('price', 'desc');
+        } else {
+            $productsQuery->orderBy('name', 'asc');
+        }
+
+        $products = $productsQuery->get(); // eller paginate (se steg 3)
 
         return view('dashboard.show', [
             'category' => $category,
+            'products' => $products,
         ]);
     }
 
