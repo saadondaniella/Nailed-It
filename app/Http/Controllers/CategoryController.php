@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -22,11 +23,48 @@ class CategoryController extends Controller
     /**
      * Dashboard listing for categories.
      */
-    public function dashboard()
+    public function dashboard(Request $request)
     {
+        $view = $request->query('view', 'categories'); // categories | products
+
         $categories = Category::orderBy('name')->get();
 
-        return view('dashboard.index', compact('categories'));
+        $products = null;
+
+        if ($view === 'products') {
+            $productsQuery = Product::query()->with('category');
+
+            $productsQuery->when($request->filled('search'), function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->query('search') . '%');
+            });
+
+            $productsQuery->when($request->filled('category_id'), function ($query) use ($request) {
+                $query->where('category_id', $request->query('category_id'));
+            });
+
+            $productsQuery->when($request->filled('min_price'), function ($query) use ($request) {
+                $query->where('price', '>=', $request->query('min_price'));
+            });
+
+            $productsQuery->when($request->filled('max_price'), function ($query) use ($request) {
+                $query->where('price', '<=', $request->query('max_price'));
+            });
+
+            $productsQuery->when($request->boolean('in_stock'), function ($query) {
+                $query->where('stock', '>', 0);
+            });
+
+            $products = $productsQuery
+                ->orderBy('name')
+                ->paginate(10)
+                ->withQueryString();
+        }
+
+        return view('dashboard.index', [
+            'view' => $view,
+            'categories' => $categories,
+            'products' => $products,
+        ]);
     }
 
     /**
