@@ -83,6 +83,8 @@
 
     <a href="{{ route('dashboard.show', $product->category) }}">Back to products</a>
 
+    @include('partials.logout')
+
 </body>
 
 </html>

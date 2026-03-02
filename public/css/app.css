@@ -3,28 +3,38 @@
 body {
     margin: 0;
     font-family: Georgia, "Times New Roman", serif;
-    background: #f3f1f1;
-    color: #111;
+    background: #ffffff;
+    color: #000;
 }
 
 .page {
-    min-height: 100vh;
+    max-height: 100vh;
     display: grid;
     place-items: center;
     padding: 48px 16px;
 }
 
 .brand-title {
-    font-size: 48px;
+    font-size: 3rem;
+    color: red;
     letter-spacing: 1px;
-    margin: 0 0 32px 0;
+    margin: 0;
     text-align: center;
+}
+
+.brand-text {
+    margin: 0;
+    text-align: center;
+    font-size: 0.7rem;
+    margin-bottom: 40px;
 }
 
 .card {
     width: min(640px, 100%);
     background: #ffffff;
     padding: 56px 24px;
+    margin-top: 50px;
+    border: solid 3px red;
 }
 
 .login-box {
@@ -47,21 +57,43 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
-    height: 32px;
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+    box-sizing: border-box;
+    height: 36px;
     border: 1px solid #cfcfcf;
-    padding: 0 10px;
+    padding: 6px 10px;
     background: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+textarea {
+    box-sizing: border-box;
+    min-height: 96px;
+    border: 1px solid #cfcfcf;
+    padding: 10px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 .actions {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 18px;
 }
 
 button {
-    background: #e66b6b;
+    background: red;
+    color: #ffffff;
     border: none;
     padding: 10px 36px;
     cursor: pointer;

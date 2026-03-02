@@ -21,7 +21,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::orderBy('name')->get();
+
+        return view('products.create', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -29,7 +33,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'color' => ['nullable', 'string', 'max:50'],
+            'stock' => ['required', 'integer', 'min:0'],
+            'category_id' => ['required', 'exists:categories,id'],
+        ]);
+
+        $product = Product::create($data);
+
+        return redirect()
+            ->route('dashboard.show', $product->category)
+            ->with('success', 'Produkten skapades!');
     }
 
     /**
@@ -75,8 +92,14 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(Product $product)
     {
-        //
+        $category = $product->category;
+
+        $product->delete();
+
+        return redirect()->route('dashboard.show', $category)
+            ->with('success', 'Produkten togs bort!');
     }
 }
