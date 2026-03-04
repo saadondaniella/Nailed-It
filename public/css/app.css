@@ -95,7 +95,8 @@ input[type="number"] {
     margin-top: 18px;
 }
 
-button, .editButton {
+button,
+.editButton {
     background: white;
     color: black;
     border: 2px solid black;
@@ -215,6 +216,13 @@ nav[role="navigation"] svg {
     color: inherit;
 }
 
+/* Header logo size */
+.site-header .brand-logo {
+    max-height: 50px;
+    height: auto;
+    display: inline-block;
+}
+
 .site-nav a {
     margin-left: 12px;
     text-decoration: none;
@@ -225,4 +233,21 @@ nav[role="navigation"] svg {
     margin: 0;
     font-size: 14px;
     color: #666;
+}
+
+/* Brand/logo styles */
+.brand-center {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.brand-center .brand-logo {
+    display: inline-block;
+    max-height: 90px;
+    height: auto;
+}
+
+@media (max-width: 480px) {
+    .brand-center .brand-logo {
+        max-height: 90px;
+    }
 }

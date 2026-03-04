@@ -11,7 +11,11 @@
 <body>
     <main class="page">
         <section class="card">
-            <h1 class="brand-title">NAILED IT!</h1>
+            <div class="brand-center">
+                <a href="{{ route('dashboard.index') }}">
+                    <img src="{{ asset('images/logo.png') }}" alt="Nailed-It logo" class="brand-logo" />
+                </a>
+            </div>
             <p class="brand-text">DIY and hardware store sins 1992</p>
 
             <div class="login-box">

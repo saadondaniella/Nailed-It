@@ -34,7 +34,7 @@
                 <label for="search">Search name</label>
                 <div id="search-help">Enter part or full product name.</div>
                 <input id="search" type="text" name="search" placeholder="Search name..." value="{{ request('search') }}" aria-describedby="search-help">
-                
+
                 @error('search')
                 <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
                 @enderror
@@ -129,7 +129,7 @@
             </a>
         </form>
 
-            
+
 
         @endif
     </aside>
@@ -147,9 +147,9 @@
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->description }}</p>
             <p>
-            Category: {{ $product->category->name }}<br>
-            Price: {{ $product->price }} kr<br>
-            Stock: {{ $product->stock }}
+                Category: {{ $product->category->name }}<br>
+                Price: {{ $product->price }} kr<br>
+                Stock: {{ $product->stock }}
             </p>
 
             <a href="{{ route('products.edit', $product) }}" class="editButton" aria-label="Edit {{ $product->name }}">Edit</a>
