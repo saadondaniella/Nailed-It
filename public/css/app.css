@@ -203,6 +203,16 @@ nav[role="navigation"] svg {
     flex: 0 0 320px;
 }
 
+/* When showing categories: sidebar should become full width */
+.layout--categories {
+    flex-direction: column;
+}
+
+.layout--categories .sidebar {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
 .main {
     flex: 1;
 }
@@ -372,4 +382,97 @@ nav[role="navigation"] svg {
     .brand-center {
         margin-bottom: 0.75rem;
     }
+}
+
+/* =========================
+   Dashboard: Categories 
+   ========================= */
+.dash-categories {
+    max-width: 980px; /* styr hur “centrerad” ytan känns */
+    margin: 0 auto; /* centrera hela sektionen */
+    padding: 16px 0;
+}
+
+.dash-categories__title {
+    margin: 0 0 18px 0;
+    text-align: center;
+}
+
+.dash-categories__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    justify-items: stretch;
+    margin-top: 50px;
+}
+
+.dash-categories__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 26px 18px; /* MER padding */
+    border: 2px solid #000;
+    background: #fff;
+    text-align: center;
+    min-height: 190px; /* gör korten större/luftigare */
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.dash-categories__icon {
+    display: grid;
+    place-items: center;
+
+    width: 56px; /* större ikon-cirkel */
+    height: 56px;
+    border: 2px solid #000;
+    border-radius: 999px;
+}
+
+.dash-categories__name {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.dash-categories__meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+.dash-categories__card:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .dash-categories__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .dash-categories__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-categories__card {
+        min-height: auto;
+    }
+}
+
+/* =========================
+   App shell (footer at bottom)
+   ========================= */
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-shell > .container {
+    flex: 1;
 }

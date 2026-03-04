@@ -3,25 +3,46 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="layout">
+<div class="layout {{ $view === 'categories' ? 'layout--categories' : '' }}">
     <aside class="sidebar">
 
         {{-- CATEGORIES VIEW --}}
         @if ($view === 'categories')
-        <h2>Categories</h2>
+        <section class="dash-categories">
+            <h2 class="dash-categories__title">Categories</h2>
 
-        @if ($categories->count())
-        <ul>
-            @foreach ($categories as $category)
-            <li>
-                <a href="{{ route('dashboard.show', $category) }}">{{ $category->name }}</a>
-                — {{ $category->products()->count() }} products
-            </li>
-            @endforeach
-        </ul>
-        @else
-        <p>No categories found.</p>
-        @endif
+            @if ($categories->count())
+            <div class="dash-categories__grid">
+                @foreach ($categories as $category)
+                <a class="dash-categories__card" href="{{ route('dashboard.show', $category) }}">
+                    @php
+                    $iconMap = [
+                    'Building Materials' => 'building.png',
+                    'Electrical' => 'electrical.png',
+                    'Garden' => 'garden.png',
+                    'Paint' => 'paint.png',
+                    'Plumbing' => 'plumbing.png',
+                    'Tools' => 'tools.png'
+                    ];
+                    @endphp
+
+                    <span class="dash-categories__icon">
+
+                        <img
+                            src="{{ asset('images/icons/categories/' . ($iconMap[$category->name] ?? 'tools.png')) }}"
+                            alt="">
+
+                    </span>
+
+                    <span class="dash-categories__name">{{ $category->name }}</span>
+                    <span class="dash-categories__meta">{{ $category->products()->count() }} products</span>
+                </a>
+                @endforeach
+            </div>
+            @else
+            <p>No categories found.</p>
+            @endif
+        </section>
         @endif
 
         {{-- PRODUCTS VIEW (controls) --}}
@@ -124,7 +145,7 @@
 
             <button type="submit">Filter</button>
 
-            <a href="{{ route('dashboard.show', $category) }}" class="reset-link">
+            <a href="{{ route('dashboard.index', ['view' => 'products']) }}" class="reset-link">
                 Reset
             </a>
         </form>

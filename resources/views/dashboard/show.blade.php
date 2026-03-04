@@ -1,4 +1,3 @@
-<!doctype html>
 @extends('layouts.app')
 
 @section('title', 'Category — ' . $category->name)
@@ -17,7 +16,7 @@
                 <label for="search">Search name</label>
                 <div id="search-help">Enter part or full product name.</div>
                 <input id="search" type="text" name="search" placeholder="Search name..." value="{{ request('search') }}" aria-describedby="search-help">
-                
+
                 @error('search')
                 <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
                 @enderror

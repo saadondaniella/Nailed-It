@@ -26,7 +26,7 @@
     @stack('head')
 </head>
 
-<body>
+<body class="app-shell">
     @include('partials.header')
 
     <main class="container">
