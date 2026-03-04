@@ -1,16 +1,47 @@
 /* resources/css/app.css */
 
+/* =========================
+   Base / Variables
+   ========================= */
+:root {
+    --color-bg: #ffffff;
+    --color-text: #000000;
+
+    --color-accent: red;
+
+    --color-muted-bg: #f7f7f7;
+    --color-panel-bg: #d9d9d9;
+
+    --color-border: #e1e1e1;
+    --color-input-border: #cfcfcf;
+
+    --color-success-border: #4caf50;
+    --color-success-bg: #e8f5e9;
+
+    --radius-sm: 4px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Georgia, "Times New Roman", serif;
-    background: #ffffff;
-    color: #000;
+    background: var(--color-bg);
+    color: var(--color-text);
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
+/* =========================
+   Page / Login Layout
+   ========================= */
 .page {
     max-height: 100vh;
     display: grid;
@@ -18,34 +49,53 @@ a {
     padding: 48px 16px;
 }
 
-.brand-title {
-    font-size: 3rem;
-    color: red;
-    letter-spacing: 1px;
-    margin: 0;
-    text-align: center;
-}
-
-.brand-text {
-    margin: 0;
-    text-align: center;
-    font-size: 0.7rem;
-    margin-bottom: 40px;
-}
-
 .card {
     width: min(640px, 100%);
-    background: #ffffff;
+    background: var(--color-bg);
     padding: 56px 24px;
     margin-top: 50px;
-    border: solid 3px red;
+    border: 3px solid var(--color-accent);
 }
 
 .login-box {
     width: min(520px, 100%);
     margin: 0 auto;
-    background: #d9d9d9;
+    background: var(--color-panel-bg);
     padding: 28px 32px;
+}
+
+/* Brand / Titles */
+.brand-title {
+    margin: 0;
+    text-align: center;
+    font-size: 3rem;
+    color: var(--color-accent);
+    letter-spacing: 1px;
+}
+
+.brand-text {
+    margin: 0 0 40px 0;
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+/* Brand/logo styles */
+.brand-center {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.brand-center .brand-logo {
+    display: inline-block;
+    max-height: 90px;
+    height: auto;
+}
+
+/* =========================
+   Forms
+   ========================= */
+label {
+    font-size: 18px;
 }
 
 .form-row {
@@ -56,8 +106,19 @@ a {
     margin-bottom: 16px;
 }
 
-label {
-    font-size: 18px;
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--color-input-border);
+    background: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.2;
 }
 
 input[type="text"],
@@ -65,26 +126,16 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 select {
-    box-sizing: border-box;
     height: 36px;
-    border: 1px solid #cfcfcf;
     padding: 6px 10px;
-    background: #fff;
-    font-family: inherit;
-    font-size: 16px;
-    line-height: 1.2;
 }
 
 textarea {
-    box-sizing: border-box;
     min-height: 96px;
-    border: 1px solid #cfcfcf;
     padding: 10px;
-    background: #fff;
-    font-family: inherit;
-    font-size: 16px;
 }
 
+/* Remove number spinners (where supported) */
 input[type="number"] {
     appearance: textfield;
 }
@@ -95,11 +146,12 @@ input[type="number"] {
     margin-top: 18px;
 }
 
+/* Buttons */
 button,
 .editButton {
-    background: white;
-    color: black;
-    border: 2px solid black;
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
     padding: 10px 36px;
     cursor: pointer;
     font-family: inherit;
@@ -110,17 +162,19 @@ button:hover {
     filter: brightness(0.95);
 }
 
-/* Compact pagination styles (matching resources/css tweaks) */
+/* =========================
+   Pagination
+   ========================= */
 nav[role="navigation"] {
     font-family: inherit;
 }
 
 nav[role="navigation"] a,
 nav[role="navigation"] span {
+    display: inline-block;
     font-size: 14px;
     padding: 6px 10px;
-    border-radius: 4px;
-    display: inline-block;
+    border-radius: var(--radius-sm);
     text-decoration: none;
     color: inherit;
 }
@@ -136,7 +190,9 @@ nav[role="navigation"] svg {
     vertical-align: middle;
 }
 
-/* Layout utilities for dashboard */
+/* =========================
+   Dashboard Layout
+   ========================= */
 .layout {
     display: flex;
     gap: 20px;
@@ -151,12 +207,14 @@ nav[role="navigation"] svg {
     flex: 1;
 }
 
+/* Status */
 .success {
     padding: 10px;
-    border: 1px solid #4caf50;
-    background: #e8f5e9;
+    border: 1px solid var(--color-success-border);
+    background: var(--color-success-bg);
 }
 
+/* Filters / Groups */
 .filter-form {
     margin: 15px 0;
     display: flex;
@@ -179,6 +237,7 @@ nav[role="navigation"] svg {
     padding-top: 1rem;
 }
 
+/* Cards / Utilities */
 .product-card {
     margin-bottom: 20px;
     padding: 10px;
@@ -189,12 +248,14 @@ nav[role="navigation"] svg {
     display: inline;
 }
 
-/* Header / Footer */
+/* =========================
+   Header / Footer
+   ========================= */
 .site-header,
 .site-footer {
-    background: #f7f7f7;
-    border-top: 1px solid #e1e1e1;
-    border-bottom: 1px solid #e1e1e1;
+    background: var(--color-muted-bg);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .site-header .container,
@@ -221,6 +282,7 @@ nav[role="navigation"] svg {
     max-height: 50px;
     height: auto;
     display: inline-block;
+    margin-left: 18px;
 }
 
 .site-nav a {
@@ -235,19 +297,79 @@ nav[role="navigation"] svg {
     color: #666;
 }
 
-/* Brand/logo styles */
-.brand-center {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-.brand-center .brand-logo {
-    display: inline-block;
-    max-height: 90px;
-    height: auto;
+/* =========================
+   Responsive (desktop first)
+   ========================= */
+
+/* <= 900px: header wraps + layout stacks */
+@media (max-width: 900px) {
+    .site-header .container,
+    .site-footer .container {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .site-nav {
+        width: 100%;
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-start;
+    }
+
+    .layout {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .sidebar,
+    .main {
+        width: 100%;
+    }
+
+    .sidebar {
+        flex: 1 1 auto;
+    }
 }
 
-@media (max-width: 480px) {
-    .brand-center .brand-logo {
-        max-height: 90px;
+/* <= 600px: forms + login spacing */
+@media (max-width: 600px) {
+    .page {
+        padding: 24px 12px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .form-row label {
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .site-nav a {
+        margin-left: 0;
+    }
+
+    .card {
+        width: calc(100% - 32px);
+        margin-top: 20px;
+        padding: 24px 12px;
+    }
+
+    .login-box {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .brand-text {
+        font-size: 0.85rem;
+        margin-bottom: 18px;
+    }
+
+    .brand-center {
+        margin-bottom: 0.75rem;
     }
 }
