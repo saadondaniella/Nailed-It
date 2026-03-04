@@ -137,6 +137,12 @@
         <p>No products in this category.</p>
         @endif
 
+        @if(isset($products) && $products->hasPages())
+        <div class="pagination">
+            {{ $products->links() }}
+        </div>
+        @endif
+
         <p>
             <a href="{{ route('dashboard.index') }}">
                 Back to dashboard

@@ -35,7 +35,7 @@ class ProductFactory extends Factory
 
         return [
             'name' => $faker->randomElement($products),
-            'description' => $faker->realText(120),
+            'description' => $faker->realText(300),
             'price' => $faker->randomFloat(2, 49, 999),
             'color' => $faker->safeColorName(),
             'stock' => $faker->numberBetween(1, 100),
