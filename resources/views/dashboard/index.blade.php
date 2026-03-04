@@ -121,6 +121,8 @@
 
             @if ($view === 'products')
 
+            <h2 class="section-title">View all products</h2>
+
             {{-- PRODUCT LIST --}}
             @if ($products && $products->count())
             @foreach ($products as $product)
