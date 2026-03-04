@@ -15,8 +15,9 @@
 
             <div class="form-group">
                 <label for="search">Search name</label>
-                <input id="search" type="text" name="search" placeholder="Search name..." value="{{ request('search') }}" aria-describedby="search-help">
                 <div id="search-help">Enter part or full product name.</div>
+                <input id="search" type="text" name="search" placeholder="Search name..." value="{{ request('search') }}" aria-describedby="search-help">
+                
                 @error('search')
                 <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
                 @enderror
@@ -24,6 +25,7 @@
 
             <div class="form-group">
                 <label for="min_price">Minimum price (kr)</label>
+                <div id="price-help">Use decimals with a dot, e.g. 19.99.</div>
                 <input id="min_price" type="number" name="min_price" placeholder="Min price" value="{{ request('min_price') }}" step="0.01" aria-describedby="price-help">
                 @error('min_price')
                 <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
@@ -33,7 +35,6 @@
             <div class="form-group">
                 <label for="max_price">Maximum price (kr)</label>
                 <input id="max_price" type="number" name="max_price" placeholder="Max price" value="{{ request('max_price') }}" step="0.01" aria-describedby="price-help">
-                <div id="price-help">Use decimals with a dot, e.g. 19.99.</div>
                 @error('max_price')
                 <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
                 @enderror
@@ -41,6 +42,7 @@
 
             <div class="form-group">
                 <label for="stock_filter">Stock</label>
+                <div id="stock-help">Filter products by availability.</div>
                 <select id="stock_filter" name="stock_filter" aria-describedby="stock-help">
                     <option value="">All</option>
                     <option value="in_stock" @selected(request('stock_filter')==='in_stock' )>
@@ -50,7 +52,6 @@
                         Out of stock
                     </option>
                 </select>
-                <div id="stock-help">Filter products by availability.</div>
                 @error('stock_filter')
                 <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
                 @enderror
@@ -62,12 +63,12 @@
 
                     <option value="name_asc"
                         @selected(request('sort', 'name_asc' )==='name_asc' )>
-                        Name (A–Z)
+                        Name (A-Z)
                     </option>
 
                     <option value="name_desc"
                         @selected(request('sort')==='name_desc' )>
-                        Name (Z–A)
+                        Name (Z-A)
                     </option>
 
                     <option value="price_asc"
@@ -119,7 +120,7 @@
             </p>
 
             {{-- EDIT --}}
-            <a href="{{ route('products.edit', $product) }}" aria-label="Edit {{ $product->name }}">
+            <a href="{{ route('products.edit', $product) }}" class="editButton" aria-label="Edit {{ $product->name }}">
                 Edit
             </a>
 
