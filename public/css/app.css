@@ -92,7 +92,7 @@ input[type="number"] {
 }
 
 button {
-    background: red;
+    background: lightblue;
     color: #ffffff;
     border: none;
     padding: 10px 36px;
@@ -128,4 +128,47 @@ nav[role="navigation"] svg {
     width: 1em;
     height: 1em;
     vertical-align: middle;
+}
+
+/* Layout utilities for dashboard */
+.layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.sidebar {
+    flex: 0 0 320px;
+}
+
+.main {
+    flex: 1;
+}
+
+.success {
+    padding: 10px;
+    border: 1px solid #4caf50;
+    background: #e8f5e9;
+}
+
+.filter-form {
+    margin: 15px 0;
+}
+
+.form-group {
+    margin-bottom: 8px;
+}
+
+.reset-link {
+    margin-left: 10px;
+}
+
+.product-card {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.inline-form {
+    display: inline;
 }
