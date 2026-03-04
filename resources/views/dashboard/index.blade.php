@@ -8,22 +8,14 @@
 </head>
 
 <body>
+    @include('partials.header')
+
     <div class="layout">
         <aside class="sidebar">
-            <h1>NAILED IT</h1>
-
-            <p>
-                <a href="{{ route('dashboard.index', ['view' => 'categories']) }}">Show categories</a> |
-                <a href="{{ route('dashboard.index', ['view' => 'products']) }}">Show all products</a>
-            </p>
-
-            <p>
-                <a href="{{ route('products.create') }}">+ Create new product</a>
-            </p>
 
             {{-- CATEGORIES VIEW --}}
             @if ($view === 'categories')
-            <h2>Dashboard — Categories</h2>
+            <h2>Categories</h2>
 
             @if ($categories->count())
             <ul>
@@ -126,7 +118,6 @@
         </aside>
 
         <main style="flex:1;">
-            <h2>Dashboard</h2>
 
             @if ($view === 'products')
 
@@ -158,7 +149,7 @@
     </div>
 
 
-    @include('partials.logout')
+    @include('partials.footer')
 </body>
 
 </html>

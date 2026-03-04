@@ -8,6 +8,8 @@
 </head>
 
 <body>
+    @include('partials.header')
+
     <div class="layout">
         <aside class="sidebar">
             <h2 id="filter-heading">Filter products</h2>
@@ -147,10 +149,11 @@
                 </a>
             </p>
 
-            @include('partials.logout')
         </main>
 
     </div>
+
+    @include('partials.footer')
 
 </body>
 

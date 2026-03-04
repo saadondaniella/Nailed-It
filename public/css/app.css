@@ -172,3 +172,39 @@ nav[role="navigation"] svg {
 .inline-form {
     display: inline;
 }
+
+/* Header / Footer */
+.site-header,
+.site-footer {
+    background: #f7f7f7;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.site-header .container,
+.site-footer .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font-weight: 700;
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-nav a {
+    margin-left: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
