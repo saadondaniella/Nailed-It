@@ -1,18 +1,14 @@
-<!doctype html>
-<html>
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <title>Create product</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
+@section('title', 'Create product')
 
-<body>
+@section('content')
+<main class="main-content">
 
     <h1>Create product</h1>
 
     @if ($errors->any())
-    <div style="padding:10px; border:1px solid #f44336; background:#ffebee; margin-bottom:15px;">
+    <div class="error-summary">
         <strong>Something went wrong:</strong>
         <ul>
             @foreach ($errors->all() as $error)
@@ -67,6 +63,5 @@
 
     <p><a href="{{ route('dashboard.index') }}">Back to dashboard</a></p>
 
-</body>
-
-</html>
+</main>
+@endsection
