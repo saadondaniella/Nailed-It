@@ -442,6 +442,12 @@ nav[role="navigation"] svg {
     transform: translateY(-2px);
 }
 
+/* create.blade */
+
+.main-content {
+    width: 25rem;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
     .dash-categories__grid {
@@ -456,6 +462,10 @@ nav[role="navigation"] svg {
 
     .dash-categories__card {
         min-height: auto;
+    }
+
+    .main-content {
+        width: 90%;
     }
 }
 
