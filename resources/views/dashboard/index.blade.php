@@ -50,6 +50,7 @@
         <h2>Filter products</h2>
 
         <form method="GET" action="{{ route('dashboard.index') }}" class="filter-form" aria-labelledby="filter-heading">
+            <input type="hidden" name="view" value="products">
 
             <div class="form-group">
                 <label for="search">Search name</label>
