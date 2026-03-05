@@ -119,9 +119,7 @@
             </p>
 
             {{-- EDIT --}}
-            <a href="{{ route('products.edit', $product) }}" class="editButton" aria-label="Edit {{ $product->name }}">
-                Edit
-            </a>
+            <a href="{{ route('products.edit', $product) }}" class="editButton" aria-label="Edit {{ $product->name }}">Edit</a>
 
             {{-- DELETE --}}
             <form action="{{ route('products.destroy', $product) }}" method="POST" class="inline-form" onsubmit="return confirm('Delete {{ addslashes($product->name) }}?');">
