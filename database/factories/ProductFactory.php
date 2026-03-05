@@ -17,7 +17,6 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-
         $faker = fake('en_US');
 
         $products = [
@@ -33,9 +32,17 @@ class ProductFactory extends Factory
             'Measuring Tape'
         ];
 
+        $descriptions = [
+            'Durable tool designed for everyday use in home improvement and DIY projects.',
+            'High-quality product built for reliability and long-lasting performance.',
+            'Practical tool ideal for both professionals and home users.',
+            'Designed for comfort and precision during various repair and building tasks.',
+            'A versatile and essential tool for any toolbox or workshop.'
+        ];
+
         return [
             'name' => $faker->randomElement($products),
-            'description' => $faker->realText(300),
+            'description' => $faker->randomElement($descriptions),
             'price' => $faker->randomFloat(2, 49, 999),
             'color' => $faker->safeColorName(),
             'stock' => $faker->numberBetween(1, 100),

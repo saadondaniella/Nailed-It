@@ -13,19 +13,19 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-    $categories = [
-        'Tools',
-        'Paint',
-        'Electrical',
-        'Plumbing',
-        'Garden',
-        'Building Materials'
-    ];
+        $categories = [
+            'Tools',
+            'Paint',
+            'Electrical',
+            'Plumbing',
+            'Garden',
+            'Building Materials'
+        ];
 
-    foreach ($categories as $category) {
-        Category::create([
-            'name' => $category
-        ]);
-    }
+        foreach ($categories as $category) {
+            Category::firstOrCreate([
+                'name' => $category
+            ]);
+        }
     }
 }

@@ -6,18 +6,13 @@
 :root {
     --color-bg: #ffffff;
     --color-text: #000000;
-
-    --color-accent: red;
-
+    --color-accent: blue;
     --color-muted-bg: #f7f7f7;
     --color-panel-bg: #d9d9d9;
-
     --color-border: #e1e1e1;
     --color-input-border: #cfcfcf;
-
     --color-success-border: #4caf50;
     --color-success-bg: #e8f5e9;
-
     --radius-sm: 4px;
 }
 

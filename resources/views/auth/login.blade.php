@@ -16,7 +16,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Nailed-It logo" class="brand-logo" />
                 </a>
             </div>
-            <p class="brand-text">DIY and hardware store sins 1992</p>
+            <p class="brand-text">DIY and hardware store sinse 1992</p>
 
             <div class="login-box">
                 <form method="POST" action="{{ url('/login') }}">
