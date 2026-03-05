@@ -18,12 +18,14 @@
             </div>
             <p class="brand-text">DIY and hardware store since 1992</p>
 
+            <!-- display errors -->
             @if ($errors->any())
             <div class="alert alert-error" role="alert">
                 {{ $errors->first() }}
             </div>
             @endif
 
+            <!-- login form -->
             <div class="login-box">
                 <form method="POST" action="{{ url('/login') }}">
                     @csrf

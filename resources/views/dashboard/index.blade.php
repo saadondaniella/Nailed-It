@@ -168,6 +168,7 @@
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->description }}</p>
             <p>
+                Color: {{ $product->color }}<br>
                 Category: {{ $product->category->name }}<br>
                 Price: {{ $product->price }} kr<br>
                 Stock: {{ $product->stock }}
