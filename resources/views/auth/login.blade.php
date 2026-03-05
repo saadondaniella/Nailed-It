@@ -16,7 +16,13 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Nailed-It logo" class="brand-logo" />
                 </a>
             </div>
-            <p class="brand-text">DIY and hardware store sinse 1992</p>
+            <p class="brand-text">DIY and hardware store since 1992</p>
+
+            @if ($errors->any())
+            <div class="alert alert-error" role="alert">
+                {{ $errors->first() }}
+            </div>
+            @endif
 
             <div class="login-box">
                 <form method="POST" action="{{ url('/login') }}">

@@ -481,3 +481,15 @@ nav[role="navigation"] svg {
 .app-shell > .container {
     flex: 1;
 }
+
+.alert {
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin: 12px 0;
+    font-size: 0.95rem;
+}
+
+.alert-error {
+    border: 1px solid rgba(220, 53, 69, 0.35);
+    background: rgba(220, 53, 69, 0.08);
+}
