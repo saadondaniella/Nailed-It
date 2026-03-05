@@ -1,12 +1,8 @@
-/* resources/css/app.css */
+   /* Base / Variables */
 
-/* =========================
-   Base / Variables
-   ========================= */
 :root {
     --color-bg: #ffffff;
     --color-text: #000000;
-    --color-accent: blue;
     --color-muted-bg: #f7f7f7;
     --color-panel-bg: #d9d9d9;
     --color-border: #e1e1e1;
@@ -34,9 +30,9 @@ a {
     color: inherit;
 }
 
-/* =========================
-   Page / Login Layout
-   ========================= */
+
+   /* Page / Login Layout */
+
 .page {
     max-height: 100vh;
     display: grid;
@@ -49,7 +45,7 @@ a {
     background: var(--color-bg);
     padding: 56px 24px;
     margin-top: 50px;
-    border: 3px solid var(--color-accent);
+    border: 3px solid var(--color-text);
 }
 
 .login-box {
@@ -57,15 +53,6 @@ a {
     margin: 0 auto;
     background: var(--color-panel-bg);
     padding: 28px 32px;
-}
-
-/* Brand / Titles */
-.brand-title {
-    margin: 0;
-    text-align: center;
-    font-size: 3rem;
-    color: var(--color-accent);
-    letter-spacing: 1px;
 }
 
 .brand-text {
@@ -86,9 +73,7 @@ a {
     height: auto;
 }
 
-/* =========================
-   Forms
-   ========================= */
+/*  Forms */
 label {
     font-size: 18px;
 }
@@ -153,13 +138,13 @@ button,
     font-size: 1rem;
 }
 
-button:hover {
+button:hover, .editButton:hover {
     filter: brightness(0.95);
 }
 
-/* =========================
-   Pagination
-   ========================= */
+
+   /* Pagination */
+
 nav[role="navigation"] {
     font-family: inherit;
 }
@@ -185,9 +170,9 @@ nav[role="navigation"] svg {
     vertical-align: middle;
 }
 
-/* =========================
-   Dashboard Layout
-   ========================= */
+
+   /* Dashboard Layout */
+
 .layout {
     display: flex;
     gap: 20px;
@@ -253,9 +238,8 @@ nav[role="navigation"] svg {
     display: inline;
 }
 
-/* =========================
-   Header / Footer
-   ========================= */
+   /* Header / Footer */
+
 .site-header,
 .site-footer {
     background: var(--color-muted-bg);
@@ -302,9 +286,7 @@ nav[role="navigation"] svg {
     color: #666;
 }
 
-/* =========================
-   Responsive (desktop first)
-   ========================= */
+   /* Responsive (desktop first) */
 
 /* <= 900px: header wraps + layout stacks */
 @media (max-width: 900px) {
@@ -379,12 +361,12 @@ nav[role="navigation"] svg {
     }
 }
 
-/* =========================
-   Dashboard: Categories 
-   ========================= */
+
+   /* Dashboard: Categories  */
+
 .dash-categories {
-    max-width: 980px; /* styr hur “centrerad” ytan känns */
-    margin: 0 auto; /* centrera hela sektionen */
+    max-width: 980px;
+    margin: 0 auto;
     padding: 16px 0;
 }
 
@@ -406,11 +388,11 @@ nav[role="navigation"] svg {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 26px 18px; /* MER padding */
+    padding: 26px 18px;
     border: 2px solid #000;
     background: #fff;
     text-align: center;
-    min-height: 190px; /* gör korten större/luftigare */
+    min-height: 190px;
     transition:
         transform 0.15s ease,
         box-shadow 0.15s ease;
@@ -420,7 +402,7 @@ nav[role="navigation"] svg {
     display: grid;
     place-items: center;
 
-    width: 56px; /* större ikon-cirkel */
+    width: 56px;
     height: 56px;
     border: 2px solid #000;
     border-radius: 999px;
@@ -469,9 +451,8 @@ nav[role="navigation"] svg {
     }
 }
 
-/* =========================
-   App shell (footer at bottom)
-   ========================= */
+   /* App shell (footer at bottom) */
+
 .app-shell {
     min-height: 100vh;
     display: flex;

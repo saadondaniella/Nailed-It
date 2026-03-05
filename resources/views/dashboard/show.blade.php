@@ -5,6 +5,8 @@
 @section('content')
 <div class="layout">
     <aside class="sidebar">
+        
+        {{-- PRODUCTS VIEW (controls) --}}
         <h2 id="filter-heading">Filter products</h2>
         @if (session('success'))
         <p class="success">{{ session('success') }}</p>
@@ -104,6 +106,7 @@
     <main class="main">
         <h1>{{ $category->name }}</h1>
 
+        {{-- PRODUCT LIST --}}
         @if($products->count())
 
         @foreach($products as $product)
@@ -114,6 +117,7 @@
             <p>{{ $product->description }}</p>
 
             <p>
+                Color: {{ $product->color }}<br>
                 Price: {{ $product->price }} kr <br>
                 Stock: {{ $product->stock }}
             </p>
