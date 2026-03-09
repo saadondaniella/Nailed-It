@@ -50,6 +50,7 @@
             name="min_price"
             placeholder="Min price"
             value="{{ request('min_price') }}"
+            min="0"
             step="1"
             aria-describedby="price-help">
 
@@ -66,6 +67,7 @@
             name="max_price"
             placeholder="Max price"
             value="{{ request('max_price') }}"
+            min="0"
             step="1"
             aria-describedby="price-help">
 

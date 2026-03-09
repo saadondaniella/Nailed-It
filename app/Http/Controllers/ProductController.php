@@ -46,7 +46,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('dashboard.show', $product->category)
-            ->with('success', 'Produkten skapades!');
+            ->with('success', 'Product created!');
     }
 
     /**
@@ -86,7 +86,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->back()->with('success', 'Produkten uppdaterades!');
+        return redirect()->back()->with('success', 'Product edited.');
     }
 
     /**
@@ -99,7 +99,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('dashboard.show', $category)
-            ->with('success', 'Produkten togs bort!');
+        return redirect()->back()->with('success', 'Product deleted.');
     }
 }

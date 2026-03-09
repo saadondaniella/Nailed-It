@@ -32,7 +32,7 @@ class Product extends Model
             $q->where('name', 'like', '%' . $request->search . '%');
         });
 
-        // Category filter (för dashboard)
+        // Category filter (for dashboard)
         $query->when($request->filled('category_id'), function ($q) use ($request) {
             $q->where('category_id', $request->category_id);
         });
