@@ -1,4 +1,4 @@
-   /* Base / Variables */
+/* Base / Variables */
 
 :root {
     --color-bg: #ffffff;
@@ -30,8 +30,7 @@ a {
     color: inherit;
 }
 
-
-   /* Page / Login Layout */
+/* Page / Login Layout */
 
 .page {
     max-height: 100vh;
@@ -138,12 +137,12 @@ button,
     font-size: 1rem;
 }
 
-button:hover, .editButton:hover {
+button:hover,
+.editButton:hover {
     filter: brightness(0.95);
 }
 
-
-   /* Pagination */
+/* Pagination */
 
 nav[role="navigation"] {
     font-family: inherit;
@@ -170,8 +169,7 @@ nav[role="navigation"] svg {
     vertical-align: middle;
 }
 
-
-   /* Dashboard Layout */
+/* Dashboard Layout */
 
 .layout {
     display: flex;
@@ -235,10 +233,11 @@ nav[role="navigation"] svg {
 }
 
 .inline-form {
-    display: inline;
+    display: inline-block;
+    margin-left: 8px;
 }
 
-   /* Header / Footer */
+/* Header / Footer */
 
 .site-header,
 .site-footer {
@@ -286,7 +285,7 @@ nav[role="navigation"] svg {
     color: #666;
 }
 
-   /* Responsive (desktop first) */
+/* Responsive (desktop first) */
 
 /* <= 900px: header wraps + layout stacks */
 @media (max-width: 900px) {
@@ -361,8 +360,7 @@ nav[role="navigation"] svg {
     }
 }
 
-
-   /* Dashboard: Categories  */
+/* Dashboard: Categories  */
 
 .dash-categories {
     max-width: 980px;
@@ -451,7 +449,7 @@ nav[role="navigation"] svg {
     }
 }
 
-   /* App shell (footer at bottom) */
+/* App shell (footer at bottom) */
 
 .app-shell {
     min-height: 100vh;
