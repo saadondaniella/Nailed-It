@@ -44,14 +44,13 @@
 
     <div class="form-group">
         <label for="min_price">Minimum price (kr)</label>
-        <div id="price-help">Use decimals with a dot, e.g. 19.99.</div>
         <input
             id="min_price"
             type="number"
             name="min_price"
             placeholder="Min price"
             value="{{ request('min_price') }}"
-            step="0.01"
+            step="1"
             aria-describedby="price-help">
 
         @error('min_price')
@@ -67,7 +66,7 @@
             name="max_price"
             placeholder="Max price"
             value="{{ request('max_price') }}"
-            step="0.01"
+            step="1"
             aria-describedby="price-help">
 
         @error('max_price')
