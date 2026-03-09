@@ -61,34 +61,12 @@
         @if ($view === 'products')
         <h1 class="section-title">All products</h1>
 
-        {{-- PRODUCT LIST --}}
         @if ($products && $products->count())
         @foreach ($products as $product)
-        <div class="product-card">
-            <h3>{{ $product->name }}</h3>
-
-            <p>{{ $product->description }}</p>
-
-            <p>
-                Color: {{ $product->color }}<br>
-                Category: {{ $product->category->name }}<br>
-                Price: {{ $product->price }} kr<br>
-                Stock: {{ $product->stock }}
-            </p>
-
-            <a
-                href="{{ route('products.edit', $product) }}"
-                class="editButton"
-                aria-label="Edit {{ $product->name }}">
-                Edit
-            </a>
-
-            <form action="{{ route('products.destroy', $product, false) }}" method="POST" class="inline-form">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
-        </div>
+        @include('partials.product-card', [
+        'product' => $product,
+        'showCategory' => true,
+        ])
         @endforeach
 
         {{ $products->links() }}
