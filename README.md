@@ -175,14 +175,16 @@ php artisan key:generate
 The application uses MySQL as the database.
 After creating the .env file, update the database configuration with your local MySQL credentials.
 
-Make sure the database section in .env looks like this:
+Make sure the database section in `.env` looks like this:
 
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
+```
 
 If the lines are commented out, remove the # so Laravel can read them.
 You may also need to create the database manually before running migrations.
