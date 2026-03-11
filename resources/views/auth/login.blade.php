@@ -18,13 +18,6 @@
             </div>
             <p class="brand-text">DIY and hardware store since 1992</p>
 
-            <!-- display errors -->
-            @if ($errors->any())
-            <div class="alert alert-error" role="alert">
-                {{ $errors->first() }}
-            </div>
-            @endif
-
             <!-- login form -->
             <div class="login-box">
                 <form method="POST" action="{{ url('/login') }}">
@@ -32,12 +25,41 @@
 
                     <div class="form-row">
                         <label for="email">Email</label>
-                        <input id="email" name="email" type="email" required autocomplete="username">
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            required
+                            autocomplete="username"
+                            aria-describedby="email-error">
+
+                        @error('email')
+                        <div>
+                            
+                        </div>
+                        <div id="email-error" role="alert" class="error-message">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="form-row">
                         <label for="password">Password</label>
-                        <input id="password" name="password" type="password" autocomplete="current-password">
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            aria-describedby="password-error">
+
+                        @error('password')
+                        <div>
+
+                        </div>
+                        <div id="password-error" role="alert" class="error-message">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="actions">

@@ -1,7 +1,7 @@
 <h2 id="filter-heading">Filter products</h2>
 
 @if (session('success'))
-<p class="success">{{ session('success') }}</p>
+<p class="success" role="status">{{ session('success') }}</p>
 @endif
 
 <form method="GET" action="{{ $action }}" class="filter-form" aria-labelledby="filter-heading">
@@ -22,10 +22,6 @@
             placeholder="Search name..."
             value="{{ request('search') }}"
             aria-describedby="search-help">
-
-        @error('search')
-        <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
-        @enderror
     </div>
 
     <div class="form-group">
@@ -38,10 +34,6 @@
             placeholder="Color..."
             value="{{ request('color') }}"
             aria-describedby="color-help">
-
-        @error('color')
-        <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
-        @enderror
     </div>
 
     @if (!empty($showCategoryFilter) && !empty($categories))
@@ -60,6 +52,7 @@
 
     <div class="form-group">
         <label for="min_price">Minimum price (kr)</label>
+        <div id="price-help">Enter price in Swedish kronor.</div>
         <input
             id="min_price"
             type="number"
@@ -69,10 +62,6 @@
             min="0"
             step="1"
             aria-describedby="price-help">
-
-        @error('min_price')
-        <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
-        @enderror
     </div>
 
     <div class="form-group">
@@ -86,10 +75,6 @@
             min="0"
             step="1"
             aria-describedby="price-help">
-
-        @error('max_price')
-        <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
-        @enderror
     </div>
 
     <div class="form-group">
@@ -97,38 +82,34 @@
         <div id="stock-help">Filter products by availability.</div>
         <select id="stock_filter" name="stock_filter" aria-describedby="stock-help">
             <option value="">All</option>
-            <option value="in_stock" @selected(request('stock_filter')==='in_stock' )>
+            <option value="in_stock" @selected(request('stock_filter')==='in_stock')>
                 In stock only
             </option>
-            <option value="out_of_stock" @selected(request('stock_filter')==='out_of_stock' )>
+            <option value="out_of_stock" @selected(request('stock_filter')==='out_of_stock')>
                 Out of stock
             </option>
         </select>
-
-        @error('stock_filter')
-        <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
-        @enderror
     </div>
 
     <div class="form-group">
         <label for="sort">Sort by</label>
         <select id="sort" name="sort">
-            <option value="name_asc" @selected(request('sort', 'name_asc' )==='name_asc' )>
+            <option value="name_asc" @selected(request('sort', 'name_asc')==='name_asc')>
                 Name (A-Z)
             </option>
-            <option value="name_desc" @selected(request('sort')==='name_desc' )>
+            <option value="name_desc" @selected(request('sort')==='name_desc')>
                 Name (Z-A)
             </option>
-            <option value="price_asc" @selected(request('sort')==='price_asc' )>
+            <option value="price_asc" @selected(request('sort')==='price_asc')>
                 Price (low → high)
             </option>
-            <option value="price_desc" @selected(request('sort')==='price_desc' )>
+            <option value="price_desc" @selected(request('sort')==='price_desc')>
                 Price (high → low)
             </option>
-            <option value="stock_asc" @selected(request('sort')==='stock_asc' )>
+            <option value="stock_asc" @selected(request('sort')==='stock_asc')>
                 Stock (low → high)
             </option>
-            <option value="stock_desc" @selected(request('sort')==='stock_desc' )>
+            <option value="stock_desc" @selected(request('sort')==='stock_desc')>
                 Stock (high → low)
             </option>
         </select>

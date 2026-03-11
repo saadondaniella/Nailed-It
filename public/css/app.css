@@ -114,6 +114,10 @@ textarea {
     padding: 10px;
 }
 
+.error-message {
+    color: red;
+}
+
 /* Remove number spinners (where supported) */
 input[type="number"] {
     appearance: textfield;
