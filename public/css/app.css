@@ -50,7 +50,7 @@ a {
 .login-box {
     width: min(520px, 100%);
     margin: 0 auto;
-    background: var(--color-panel-bg);
+    background: var(--color-muted-bg);
     padding: 28px 32px;
 }
 
@@ -289,6 +289,7 @@ nav[role="navigation"] svg {
 
 /* <= 900px: header wraps + layout stacks */
 @media (max-width: 900px) {
+
     .site-header .container,
     .site-footer .container {
         flex-wrap: wrap;
@@ -457,7 +458,7 @@ nav[role="navigation"] svg {
     flex-direction: column;
 }
 
-.app-shell > .container {
+.app-shell>.container {
     flex: 1;
 }
 
