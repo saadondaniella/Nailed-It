@@ -48,6 +48,12 @@
     </div>
 
     <div>
+        <label for="color">color</label><br>
+        <input type="text"
+            id="color" name="color" value="{{ old('color', $product->color) }}">
+    </div>
+
+    <div>
         <label for="stock">Stock</label><br>
         <input type="number"
             id="stock"
