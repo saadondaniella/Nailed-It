@@ -227,6 +227,7 @@ http://localhost:8000
 To test the application, you can log in using the following demo account:
 
 Email: rune@yrgo.se
+
 Password: 123
 
 ---
