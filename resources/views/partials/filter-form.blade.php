@@ -28,6 +28,22 @@
         @enderror
     </div>
 
+    <div class="form-group">
+        <label for="color">Color</label>
+        <div id="color-help">Enter color name, e.g. red.</div>
+        <input
+            id="color"
+            type="text"
+            name="color"
+            placeholder="Color..."
+            value="{{ request('color') }}"
+            aria-describedby="color-help">
+
+        @error('color')
+        <p class="error" role="alert" aria-live="polite">{{ $message }}</p>
+        @enderror
+    </div>
+
     @if (!empty($showCategoryFilter) && !empty($categories))
     <div class="form-group">
         <label for="category_id">Category</label>
