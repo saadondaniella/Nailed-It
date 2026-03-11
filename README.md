@@ -1,59 +1,252 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Product Dashboard – Laravel Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel
+This project is a web application built with **Laravel** that allows users to browse, filter, edit, and manage products organized by categories.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The application demonstrates typical CRUD functionality together with filtering, pagination, and a structured dashboard interface.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The goal of the project is to showcase good Laravel practices such as:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* MVC architecture
+* Blade templating
+* Eloquent relationships
+* Factories and seeders
+* Form validation
+* Reusable partial views
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Category overview
 
-## Laravel Sponsors
+When opening the dashboard, the user is presented with a visual overview of all product categories.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Each category displays:
 
-### Premium Partners
+* An icon
+* The category name
+* Number of products in the category
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Selecting a category opens the product view for that category.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Product listing
 
-## Code of Conduct
+Inside a category, users can see a list of products containing:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Product name
+* Description
+* Color
+* Category
+* Price
+* Stock amount
 
-## Security Vulnerabilities
+Products are paginated for better performance and usability.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+### Filtering
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Products can be filtered using the filter form:
+
+* Search by product name
+* Color
+* Filter by category
+* Minimum price
+* Maximum price
+* Stock availability
+* Sorting (name, price, stock)
+
+Filtering uses **GET parameters**, allowing filtered views to be bookmarked or shared.
+
+---
+
+### Product management
+
+Users can manage products through:
+
+* **Edit** – update product details
+* **Delete** – remove a product from the database
+
+Laravel validation ensures that all submitted data is valid.
+
+---
+
+## Technologies Used
+
+* **Laravel**
+* **PHP**
+* **Blade templates**
+* **Eloquent ORM**
+* **HTML / CSS**
+* **Factories and Seeders**
+* **Pagination**
+
+---
+
+## Database Structure
+
+The application uses two main models:
+
+### Categories
+
+Stores product categories.
+
+Fields:
+
+* `id`
+* `name`
+* timestamps
+
+Relationship:
+
+* A category **has many products**
+
+---
+
+### Products
+
+Stores product information.
+
+Fields:
+
+* `id`
+* `name`
+* `description`
+* `color`
+* `price`
+* `stock`
+* `category_id`
+* timestamps
+
+Relationship:
+
+* A product **belongs to a category**
+
+---
+
+## Factories and Seeders
+
+The project includes database seeders that populate the application with realistic demo data.
+
+This ensures the application looks the same when run locally as it does for reviewers or clients.
+
+Seeded data includes:
+
+* Several predefined categories
+* Multiple products with realistic names, descriptions, prices, and stock values
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/saadondaniella/Nailed-It
+cd project-folder
+```
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Create environment file:
+
+```bash
+cp .env.example .env
+```
+
+Generate application key:
+
+```bash
+php artisan key:generate
+```
+
+---
+
+## Database Setup
+
+Run migrations and seed the database:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+This will:
+
+* create all tables
+* populate the database with demo data
+
+---
+
+## Running the Application
+
+Start the Laravel development server:
+
+```bash
+php artisan serve
+```
+
+Open the application in your browser:
+
+```
+http://localhost:8000
+```
+
+---
+
+## Project Structure
+
+Important directories:
+
+```
+app/
+    Models/
+    Http/Controllers/
+
+resources/views/
+    layouts/
+    dashboard/
+    partials/
+
+database/
+    factories/
+    seeders/
+```
+
+* **Controllers** handle business logic
+* **Models** manage database relationships
+* **Views** are rendered using Blade templates
+
+---
+
+## Security Considerations
+
+The application includes several security practices:
+
+* Blade escaping (`{{ }}`) prevents XSS attacks
+* Form validation ensures correct input
+* CSRF protection is enabled for all forms
+* Method spoofing is used for DELETE requests
+
+---
+
+## Future Improvements
+
+Possible improvements for the project:
+
+* Product image uploads
+* API endpoints
+* Product search optimization
+
+---
+
+## Authors
+
+Project created as part of a Laravel development assignment.
