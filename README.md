@@ -279,4 +279,8 @@ Possible improvements for the project:
 
 ## Authors
 
-Project created as part of a Laravel development assignment.
+Daniella Saadon  
+GitHub: https://github.com/saadondaniella
+
+Marie Färnström  
+GitHub: https://github.com/mariefarnstrom
