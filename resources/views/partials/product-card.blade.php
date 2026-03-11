@@ -4,7 +4,9 @@
     <p>{{ $product->description }}</p>
 
     <p>
+        @if (!empty($product->color))
         Color: {{ $product->color }}<br>
+        @endif
 
         @if (!empty($showCategory))
         Category: {{ $product->category->name }}<br>
