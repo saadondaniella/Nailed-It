@@ -66,7 +66,7 @@
         <button type="submit">Save</button>
     </form>
 
-    <p><a href="{{ route('dashboard.show', $product->category) }}">Back to products</a></p>
+    <p><a href="{{ route('dashboard.show', $product->category) }}">← Back to products</a></p>
 
 </main>
 

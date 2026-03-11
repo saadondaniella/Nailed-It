@@ -34,9 +34,7 @@
         @endif
 
         <p>
-            <a href="{{ route('dashboard.index') }}">
-                Back to dashboard
-            </a>
+            <a href="{{ route('dashboard.index') }}">← Back to dashboard</a>
         </p>
     </main>
 </div>

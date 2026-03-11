@@ -61,7 +61,7 @@
         <button type="submit">Save</button>
     </form>
 
-    <p><a href="{{ route('dashboard.index') }}">Back to dashboard</a></p>
+    <p><a href="{{ route('dashboard.index') }}">← Back to dashboard</a></p>
 
 </main>
 @endsection
