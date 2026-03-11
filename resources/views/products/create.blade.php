@@ -22,33 +22,33 @@
         @csrf
 
         <p>
-            <label>Name</label><br>
-            <input type="text" name="name" value="{{ old('name') }}">
+            <label for="name">Name</label><br>
+            <input id="name" type="text" name="name" value="{{ old('name') }}">
         </p>
 
         <p>
-            <label>Description</label><br>
-            <textarea name="description">{{ old('description') }}</textarea>
+            <label for="description">Description</label><br>
+            <textarea id="description" name="description">{{ old('description') }}</textarea>
         </p>
 
         <p>
-            <label>Price</label><br>
-            <input type="number" step="0.01" name="price" value="{{ old('price') }}">
+            <label for="price">Price</label><br>
+            <input id="price" type="number" step="0.01" name="price" value="{{ old('price') }}">
         </p>
 
         <p>
-            <label>Color</label><br>
-            <input type="text" name="color" value="{{ old('color') }}">
+            <label for="color">Color</label><br>
+            <input id="color" type="text" name="color" value="{{ old('color') }}">
         </p>
 
         <p>
-            <label>Stock</label><br>
-            <input type="number" name="stock" value="{{ old('stock', 0) }}">
+            <label for="stock">Stock</label><br>
+            <input id="stock" type="number" name="stock" value="{{ old('stock', 0) }}">
         </p>
 
         <p>
-            <label>Category</label><br>
-            <select name="category_id">
+            <label for="category_id">Category</label><br>
+            <select id="category_id" name="category_id">
                 <option value="">Choose category...</option>
                 @foreach ($categories as $category)
                 <option value="{{ $category->id }}" @selected(old('category_id')==$category->id)>
