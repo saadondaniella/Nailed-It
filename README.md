@@ -273,7 +273,6 @@ The application includes several security practices:
 Possible improvements for the project:
 
 - Product image uploads
-- API endpoints
 - Product search optimization
 
 ---
