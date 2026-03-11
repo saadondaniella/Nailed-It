@@ -37,6 +37,11 @@ class Product extends Model
             $q->where('category_id', $request->category_id);
         });
 
+        // Color filter
+        $query->when($request->filled('color'), function ($q) use ($request) {
+            $q->where('color', 'like', '%' . $request->color . '%');
+        });
+
         // Price filters
         $query->when($request->filled('min_price'), function ($q) use ($request) {
             $q->where('price', '>=', $request->min_price);
