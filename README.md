@@ -8,12 +8,12 @@ The application demonstrates typical CRUD functionality together with filtering,
 
 The goal of the project is to showcase good Laravel practices such as:
 
-* MVC architecture
-* Blade templating
-* Eloquent relationships
-* Factories and seeders
-* Form validation
-* Reusable partial views
+- MVC architecture
+- Blade templating
+- Eloquent relationships
+- Factories and seeders
+- Form validation
+- Reusable partial views
 
 ---
 
@@ -25,9 +25,9 @@ When opening the dashboard, the user is presented with a visual overview of all 
 
 Each category displays:
 
-* An icon
-* The category name
-* Number of products in the category
+- An icon
+- The category name
+- Number of products in the category
 
 Selecting a category opens the product view for that category.
 
@@ -37,12 +37,12 @@ Selecting a category opens the product view for that category.
 
 Inside a category, users can see a list of products containing:
 
-* Product name
-* Description
-* Color
-* Category
-* Price
-* Stock amount
+- Product name
+- Description
+- Color
+- Category
+- Price
+- Stock amount
 
 Products are paginated for better performance and usability.
 
@@ -52,13 +52,13 @@ Products are paginated for better performance and usability.
 
 Products can be filtered using the filter form:
 
-* Search by product name
-* Color
-* Filter by category
-* Minimum price
-* Maximum price
-* Stock availability
-* Sorting (name, price, stock)
+- Search by product name
+- Color
+- Filter by category
+- Minimum price
+- Maximum price
+- Stock availability
+- Sorting (name, price, stock)
 
 Filtering uses **GET parameters**, allowing filtered views to be bookmarked or shared.
 
@@ -68,8 +68,8 @@ Filtering uses **GET parameters**, allowing filtered views to be bookmarked or s
 
 Users can manage products through:
 
-* **Edit** – update product details
-* **Delete** – remove a product from the database
+- **Edit** – update product details
+- **Delete** – remove a product from the database
 
 Laravel validation ensures that all submitted data is valid.
 
@@ -77,13 +77,13 @@ Laravel validation ensures that all submitted data is valid.
 
 ## Technologies Used
 
-* **Laravel**
-* **PHP**
-* **Blade templates**
-* **Eloquent ORM**
-* **HTML / CSS**
-* **Factories and Seeders**
-* **Pagination**
+- **Laravel**
+- **PHP**
+- **Blade templates**
+- **Eloquent ORM**
+- **HTML / CSS**
+- **Factories and Seeders**
+- **Pagination**
 
 ---
 
@@ -97,13 +97,13 @@ Stores product categories.
 
 Fields:
 
-* `id`
-* `name`
-* timestamps
+- `id`
+- `name`
+- timestamps
 
 Relationship:
 
-* A category **has many products**
+- A category **has many products**
 
 ---
 
@@ -113,18 +113,18 @@ Stores product information.
 
 Fields:
 
-* `id`
-* `name`
-* `description`
-* `color`
-* `price`
-* `stock`
-* `category_id`
-* timestamps
+- `id`
+- `name`
+- `description`
+- `color`
+- `price`
+- `stock`
+- `category_id`
+- timestamps
 
 Relationship:
 
-* A product **belongs to a category**
+- A product **belongs to a category**
 
 ---
 
@@ -136,8 +136,8 @@ This ensures the application looks the same when run locally as it does for revi
 
 Seeded data includes:
 
-* Several predefined categories
-* Multiple products with realistic names, descriptions, prices, and stock values
+- Several predefined categories
+- Multiple products with realistic names, descriptions, prices, and stock values
 
 ---
 
@@ -180,8 +180,8 @@ php artisan migrate:fresh --seed
 
 This will:
 
-* create all tables
-* populate the database with demo data
+- create all tables
+- populate the database with demo data
 
 ---
 
@@ -198,6 +198,15 @@ Open the application in your browser:
 ```
 http://localhost:8000
 ```
+
+---
+
+## Demo Login
+
+To test the application, you can log in using the following demo account:
+
+Email: rune@yrgo.se
+Password: 123
 
 ---
 
@@ -220,9 +229,9 @@ database/
     seeders/
 ```
 
-* **Controllers** handle business logic
-* **Models** manage database relationships
-* **Views** are rendered using Blade templates
+- **Controllers** handle business logic
+- **Models** manage database relationships
+- **Views** are rendered using Blade templates
 
 ---
 
@@ -230,10 +239,10 @@ database/
 
 The application includes several security practices:
 
-* Blade escaping (`{{ }}`) prevents XSS attacks
-* Form validation ensures correct input
-* CSRF protection is enabled for all forms
-* Method spoofing is used for DELETE requests
+- Blade escaping (`{{ }}`) prevents XSS attacks
+- Form validation ensures correct input
+- CSRF protection is enabled for all forms
+- Method spoofing is used for DELETE requests
 
 ---
 
@@ -241,9 +250,9 @@ The application includes several security practices:
 
 Possible improvements for the project:
 
-* Product image uploads
-* API endpoints
-* Product search optimization
+- Product image uploads
+- API endpoints
+- Product search optimization
 
 ---
 
