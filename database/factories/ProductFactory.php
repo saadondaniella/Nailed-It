@@ -24,9 +24,14 @@ class ProductFactory extends Factory
             'Screwdriver Set',
             'Drill Machine',
             'Paint Brush',
+            'Paint Roller',
+            'Paint Tray',
             'Extension Cable',
             'Garden Shovel',
             'Water Hose',
+            'Pipe Wrench',
+            'PVC Pipe',
+            'Plumbing Tape',
             'LED Bulb',
             'Wood Screws Pack',
             'Measuring Tape'
@@ -40,13 +45,43 @@ class ProductFactory extends Factory
             'A versatile and essential tool for any toolbox or workshop.'
         ];
 
+        $name = $faker->randomElement($products);
+
+        // Map product names (or keywords) to categories to keep seeding realistic
+        // Order matters: place more specific categories first to avoid overlaps
+        $mapping = [
+            'Paint' => ['Paint Brush', 'Paint Roller', 'Paint Tray'],
+            'Plumbing' => ['Pipe Wrench', 'PVC Pipe', 'Plumbing Tape', 'Water Hose'],
+            'Electrical' => ['Extension Cable', 'LED Bulb'],
+            'Garden' => ['Garden Shovel'],
+            'Building Materials' => ['Wood Screws Pack', 'Measuring Tape'],
+            'Tools' => ['Hammer', 'Screwdriver Set', 'Drill Machine'],
+        ];
+
+        $categoryId = null;
+
+        foreach ($mapping as $catName => $items) {
+            if (in_array($name, $items)) {
+                $category = Category::where('name', $catName)->first();
+                if ($category) {
+                    $categoryId = $category->id;
+                }
+                break;
+            }
+        }
+
+        // Fallback to random existing category if mapping didn't find one
+        if (is_null($categoryId)) {
+            $categoryId = Category::inRandomOrder()->first()->id;
+        }
+
         return [
-            'name' => $faker->randomElement($products),
+            'name' => $name,
             'description' => $faker->randomElement($descriptions),
             'price' => $faker->randomFloat(2, 49, 999),
             'color' => $faker->safeColorName(),
             'stock' => $faker->numberBetween(1, 100),
-            'category_id' => Category::inRandomOrder()->first()->id,
+            'category_id' => $categoryId,
         ];
     }
 }
