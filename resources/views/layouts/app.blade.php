@@ -35,6 +35,8 @@
 
     @include('partials.footer')
 
+    @include('partials.confirm-modal')
+
     @stack('scripts')
 </body>
 

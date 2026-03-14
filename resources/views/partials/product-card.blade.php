@@ -27,9 +27,13 @@
         action="{{ route('products.destroy', $product) }}"
         method="POST"
         class="inline-form"
-        onsubmit="return confirm('Delete {{ addslashes($product->name) }}?');">
+        data-confirm-delete>
+
         @csrf
         @method('DELETE')
-        <button type="submit" aria-label="Delete {{ $product->name }}">Delete</button>
+
+        <button type="submit" aria-label="Delete {{ $product->name }}">
+            Delete
+        </button>
     </form>
 </div>

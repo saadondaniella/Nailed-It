@@ -1,4 +1,4 @@
-/* Base / Variables */
+/*  BASE / VARIABLES */
 
 :root {
     --color-bg: #ffffff;
@@ -12,11 +12,15 @@
     --radius-sm: 4px;
 }
 
+/* Reset + box model */
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
+
+/* GLOBAL BODY / TEXT */
 
 body {
     margin: 0;
@@ -25,12 +29,14 @@ body {
     color: var(--color-text);
 }
 
+/* Remove underline from links */
+
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Page / Login Layout */
+/* PAGE / LOGIN LAYOUT */
 
 .page {
     max-height: 100vh;
@@ -38,6 +44,8 @@ a {
     place-items: center;
     padding: 48px 16px;
 }
+
+/* Outer card container */
 
 .card {
     width: min(640px, 100%);
@@ -47,6 +55,8 @@ a {
     border: 3px solid var(--color-text);
 }
 
+/* Login form box */
+
 .login-box {
     width: min(520px, 100%);
     margin: 0 auto;
@@ -54,13 +64,16 @@ a {
     padding: 28px 32px;
 }
 
+/* Small brand text under logo */
+
 .brand-text {
     margin: 0 0 40px 0;
     text-align: center;
     font-size: 0.7rem;
 }
 
-/* Brand/logo styles */
+/* BRAND / LOGO */
+
 .brand-center {
     text-align: center;
     margin-bottom: 1rem;
@@ -71,11 +84,11 @@ a {
     max-height: 90px;
     height: auto;
 }
-
-/*  Forms */
-label {
+FORMS */ label {
     font-size: 18px;
 }
+
+/* Label + input grid layout */
 
 .form-row {
     display: grid;
@@ -85,7 +98,8 @@ label {
     margin-bottom: 16px;
 }
 
-/* Inputs */
+/* INPUT FIELDS */
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -100,6 +114,8 @@ textarea {
     line-height: 1.2;
 }
 
+/* Standard input size */
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -109,19 +125,26 @@ select {
     padding: 6px 10px;
 }
 
+/* Textarea size */
+
 textarea {
     min-height: 96px;
     padding: 10px;
 }
 
+/* Validation error */
+
 .error-message {
     color: red;
 }
 
-/* Remove number spinners (where supported) */
+/* Remove number input arrows (browser dependent) */
+
 input[type="number"] {
     appearance: textfield;
 }
+
+/* FORM ACTION BUTTON AREA */
 
 .actions {
     display: flex;
@@ -129,9 +152,12 @@ input[type="number"] {
     margin-top: 18px;
 }
 
-/* Buttons */
+/* BUTTONS
+   Base button style used across the app */
+
 button,
 .editButton {
+    display: inline-block;
     background: #fff;
     color: #000;
     border: 2px solid #000;
@@ -139,14 +165,29 @@ button,
     cursor: pointer;
     font-family: inherit;
     font-size: 1rem;
+    transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
 }
 
-button:hover,
+/* Edit button hover (green) */
+
 .editButton:hover {
-    filter: brightness(0.95);
+    background: #2e7d32;
+    color: #fff;
+    border-color: #2e7d32;
 }
 
-/* Pagination */
+/* Delete button hover (red) */
+
+.inline-form button:hover {
+    background: #c62828;
+    color: #fff;
+    border-color: #c62828;
+}
+
+/* PAGINATION */
 
 nav[role="navigation"] {
     font-family: inherit;
@@ -173,7 +214,7 @@ nav[role="navigation"] svg {
     vertical-align: middle;
 }
 
-/* Dashboard Layout */
+/* DASHBOARD LAYOUT */
 
 .layout {
     display: flex;
@@ -185,7 +226,8 @@ nav[role="navigation"] svg {
     flex: 0 0 320px;
 }
 
-/* When showing categories: sidebar should become full width */
+/* Category layout variant */
+
 .layout--categories {
     flex-direction: column;
 }
@@ -199,14 +241,16 @@ nav[role="navigation"] svg {
     flex: 1;
 }
 
-/* Status */
+/* STATUS MESSAGES */
+
 .success {
     padding: 10px;
     border: 1px solid var(--color-success-border);
     background: var(--color-success-bg);
 }
 
-/* Filters / Groups */
+/* FILTERS */
+
 .filter-form {
     margin: 15px 0;
     display: flex;
@@ -229,19 +273,22 @@ nav[role="navigation"] svg {
     padding-top: 1rem;
 }
 
-/* Cards / Utilities */
+/* PRODUCT CARDS */
+
 .product-card {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ccc;
 }
 
+/* Inline form used for delete buttons */
+
 .inline-form {
     display: inline-block;
     margin-left: 8px;
 }
 
-/* Header / Footer */
+/* HEADER / FOOTER */
 
 .site-header,
 .site-footer {
@@ -263,13 +310,16 @@ nav[role="navigation"] svg {
     padding: 2rem;
 }
 
+/* Brand link */
+
 .brand {
     font-weight: 700;
     text-decoration: none;
     color: inherit;
 }
 
-/* Header logo size */
+/* Header logo */
+
 .site-header .brand-logo {
     max-height: 50px;
     height: auto;
@@ -277,11 +327,15 @@ nav[role="navigation"] svg {
     margin-left: 18px;
 }
 
+/* Navigation links */
+
 .site-nav a {
     margin-left: 12px;
     text-decoration: none;
     color: inherit;
 }
+
+/* Footer text */
 
 .site-footer p {
     margin: 0;
@@ -289,11 +343,11 @@ nav[role="navigation"] svg {
     color: #666;
 }
 
-/* Responsive (desktop first) */
+/* =RESPONSIVE */
 
-/* <= 900px: header wraps + layout stacks */
+/* Tablet */
+
 @media (max-width: 900px) {
-
     .site-header .container,
     .site-footer .container {
         flex-wrap: wrap;
@@ -324,7 +378,8 @@ nav[role="navigation"] svg {
     }
 }
 
-/* <= 600px: forms + login spacing */
+/* Mobile */
+
 @media (max-width: 600px) {
     .page {
         padding: 24px 12px;
@@ -365,7 +420,7 @@ nav[role="navigation"] svg {
     }
 }
 
-/* Dashboard: Categories  */
+/* CATEGORY DASHBOARD */
 
 .dash-categories {
     max-width: 980px;
@@ -404,7 +459,6 @@ nav[role="navigation"] svg {
 .dash-categories__icon {
     display: grid;
     place-items: center;
-
     width: 56px;
     height: 56px;
     border: 2px solid #000;
@@ -427,34 +481,13 @@ nav[role="navigation"] svg {
     transform: translateY(-2px);
 }
 
-/* create.blade */
+/* CREATE PAGE */
 
 .main-content {
     width: 25rem;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .dash-categories__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 600px) {
-    .dash-categories__grid {
-        grid-template-columns: 1fr;
-    }
-
-    .dash-categories__card {
-        min-height: auto;
-    }
-
-    .main-content {
-        width: 90%;
-    }
-}
-
-/* App shell (footer at bottom) */
+/* APP SHELL */
 
 .app-shell {
     min-height: 100vh;
@@ -462,9 +495,11 @@ nav[role="navigation"] svg {
     flex-direction: column;
 }
 
-.app-shell>.container {
+.app-shell > .container {
     flex: 1;
 }
+
+/* Alerts */
 
 .alert {
     padding: 12px 14px;
